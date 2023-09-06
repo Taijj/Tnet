@@ -1,0 +1,23 @@
+
+
+#gallery-widget-images {
+	display: flex;
+}
+
+.gallery-widget-admin-image-container {		
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	
+	width: 100px;
+	height: 100px;
+	overflow: hidden;
+	margin: 5px;
+	
+	float: left;
+}
+
+.gallery-widget-admin-image {
+	max-width: 256px;
+	max-height: 256px
+}
