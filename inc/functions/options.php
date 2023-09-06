@@ -7,26 +7,26 @@
 		global $tnet_social_page_id, $tnet_cast_page_id, $tnet_episode_page_id, $tnet_blog_page_id, $tnet_main_page_id;
 
 		$tnet_social_page_id = add_menu_page(
-			esc_html(pll__('ADMIN_TITLE', 'tnet')),         // The value used to populate the browser's title bar when the menu page is active
-			esc_html(pll__('ADMIN_MENU', 'tnet')),        			// The text of the menu in the administrator's sidebar
-			'administrator', 			        // What roles are able to access the menu
-			'tnet_menu_page',   				// The ID used to bind submenu items to this menu 
-			'render_tnet_menu' 					// The callback function used to render this menu
+			tnet_pl(ADMIN_TITLE),	// The value used to populate the browser's title bar when the menu page is active
+			tnet_pl(ADMIN_MENU),    // The text of the menu in the administrator's sidebar
+			'administrator', 		// What roles are able to access the menu
+			'tnet_menu_page',   	// The ID used to bind submenu items to this menu 
+			'render_tnet_menu' 		// The callback function used to render this menu
 		);
 		
 		$tnet_main_page_id = add_submenu_page(
-			'tnet_menu_page',		// parent menu id
-			esc_html(pll__('ADMIN_MAIN_TITLE', 'tnet')),		// page title
-			esc_html(pll__('ADMIN_MAIN_MENU', 'tnet')),		// sidebar title
-			'administrator',		// Capabilities
-			'tnet_main_page',		// This menu's id
-			'render_tnet_menu'		// Render function
+			'tnet_menu_page',			// parent menu id
+			tnet_pl(ADMIN_MAIN_TITLE),	// page title
+			tnet_pl(ADMIN_MAIN_MENU),	// sidebar title
+			'administrator',			// Capabilities
+			'tnet_main_page',			// This menu's id
+			'render_tnet_menu'			// Render function
 		);
 		
 		$tnet_blog_page_id = add_submenu_page(
 			'tnet_menu_page',		// parent menu id
-			esc_html(pll__('ADMIN_BLOG_TITLE', 'tnet')),		// page title
-			esc_html(pll__('ADMIN_BLOG_MENU', 'tnet')),		// sidebar title
+			tnet_pl(ADMIN_BLOG_TITLE),		// page title
+			tnet_pl(ADMIN_BLOG_MENU),		// sidebar title
 			'administrator',		// Capabilities
 			'tnet_blog_page',		// This menu's id
 			'render_tnet_menu'		// Render function
@@ -34,8 +34,8 @@
 		
 		$tnet_cast_page_id = add_submenu_page(
 			'tnet_menu_page',		// parent menu id
-			esc_html(pll__('ADMIN_CAST_TITLE', 'tnet')),		// page title
-			esc_html(pll__('ADMIN_CAST_MENU', 'tnet')),		// sidebar title
+			tnet_pl(ADMIN_CAST_TITLE),		// page title
+			tnet_pl(ADMIN_CAST_MENU),		// sidebar title
 			'administrator',		// Capabilities
 			'tnet_cast_page',		// This menu's id
 			'render_tnet_menu'		// Render function
@@ -43,8 +43,8 @@
 		
 		$tnet_episode_page_id = add_submenu_page(
 			'tnet_menu_page',		// parent menu id
-			esc_html(pll__('ADMIN_EPISODES_TITLE', 'tnet')),	// page title
-			esc_html(pll__('ADMIN_EPISODES_MENU', 'tnet')),	// sidebar title
+			tnet_pl(ADMIN_EPISODES_TITLE),	// page title
+			tnet_pl(ADMIN_EPISODES_MENU),	// sidebar title
 			'administrator',		// Capabilities
 			'tnet_episodes_page',	// This menu's id
 			'render_tnet_menu'		// Render function
@@ -98,7 +98,7 @@
 			if($menu_page_referer != '' || $cast_page_referer != '' || $episodes_page_referer != ''
 				|| $blog_page_referer != '' || $main_page_referer != '')
 			{
-				return esc_html(pll__('ADMIN_MEDIA_LIBRARY_USE', $domain));
+				return tnet_pl(ADMIN_MEDIA_LIBRARY_USE);
 			}
 		}
 		
@@ -111,7 +111,7 @@
 	{?>		
 		<div class="wrap">
 	 			
-			<h2><?php esc_html_e(pll__('ADMIN_OPTIONS', 'tnet')); ?></h2>			
+			<h2><?php tnet_e(ADMIN_OPTIONS); ?></h2>			
 	 
 			<?php //Make a call to the WordPress function for rendering errors when settings are saved. ?>
 			<?php settings_errors(); ?>	
@@ -165,7 +165,7 @@
 		// Social section
 		add_settings_section(
 			'tnet_social_section',         		// ID used to identify this section and with which to register options
-			esc_html(pll__('ADMIN_GENERAL', 'tnet')),  // Title to be displayed on the administration page
+			tnet_pl(ADMIN_GENERAL),  // Title to be displayed on the administration page
 			'render_tnet_social_description', 	// Callback used to render the description of the section
 			'tnet_menu_page'     				// Page on which to add this section of options
 		);		
@@ -173,7 +173,7 @@
 		// Social count
 		add_settings_field( 
 			'tnet_social_buttons_count',			// ID used to identify the field throughout the theme
-			esc_html(pll__('ADMIN_SOCIAL_BUTTON_COUNT', 'tnet')),					// The label to the left of the option interface element
+			tnet_pl(ADMIN_SOCIAL_BUTTON_COUNT),					// The label to the left of the option interface element
 			'render_tnet_social_buttons_count',		// The name of the function responsible for rendering the option interface
 			'tnet_menu_page',    					// The page on which this option will be displayed
 			'tnet_social_section'	    			// The name of the section to which this field belongs				
@@ -182,7 +182,7 @@
 		// Social size
 		add_settings_field( 
 			'tnet_social_buttons_size',				// ID used to identify the field throughout the theme
-			esc_html(pll__('ADMIN_SOCIAL_BUTTON_IMAGE_SIZE', 'tnet')),							// The label to the left of the option interface element
+			tnet_pl(ADMIN_SOCIAL_BUTTON_IMAGE_SIZE),							// The label to the left of the option interface element
 			'render_tnet_social_buttons_size',		// The name of the function responsible for rendering the option interface
 			'tnet_menu_page',    					// The page on which this option will be displayed
 			'tnet_social_section'	    			// The name of the section to which this field belongs				
@@ -194,11 +194,11 @@
 		for ($i = 0; $i < (int)$options['social_buttons']['count']; $i++)
 		{			
 			add_settings_field( 
-				'tnet_social_buttons_count'.$i,						// ID used to identify the field throughout the theme
-				esc_html(pll__('ADMIN_SOCIAL_BUTTON_LABEL')).$i,	// The label to the left of the option interface element
-				'render_tnet_social_buttons_fields',				// The name of the function responsible for rendering the option interface
-				'tnet_menu_page',    								// The page on which this option will be displayed
-				'tnet_social_section',     							// The name of the section to which this field belongs
+				'tnet_social_buttons_count'.$i,				// ID used to identify the field throughout the theme
+				tnet_pl(ADMIN_SOCIAL_BUTTON_LABEL).$i,		// The label to the left of the option interface element
+				'render_tnet_social_buttons_fields',		// The name of the function responsible for rendering the option interface
+				'tnet_menu_page',    						// The page on which this option will be displayed
+				'tnet_social_section',     					// The name of the section to which this field belongs
 				array($i)
 			);
 		}
@@ -215,7 +215,7 @@
 	
 	function render_tnet_social_description()
 	{
-		echo '<p>' . esc_html(pll__('ADMIN_SOCIAL_BUTTON_DESCRIPTION', 'tnet')) . '</p>';
+		echo '<p>' . tnet_pl(ADMIN_SOCIAL_BUTTON_DESCRIPTION) . '</p>';
 	}	
 	
 	function render_tnet_social_buttons_count()
@@ -243,7 +243,7 @@
 		$html = '';
 		
 		// Label
-		$html.= esc_html(pll__('ADMIN_SOCIAL_BUTTON_GRAPHICS', 'tnet'));
+		$html.= tnet_pl(ADMIN_SOCIAL_BUTTON_GRAPHICS);
 		
 		// Images
 		$html.= '<img id="up_image'.$index.'" src="'.$options['social_buttons']['up_image_urls'][$index].'">';			
@@ -255,25 +255,25 @@
 		
 		// Buttons
 		$html.= '<br/>';
-		$html.= '<input up="true" index="'.$index.'" id="upload_social_button_up_image'.$index.'" type="button" class="social_image_upload_button" value="' . esc_html(pll__('ADMIN_SOCIAL_BUTTON_UP_IMAGE', 'tnet')) . '" />';
-		$html.= '<input up="false" index="'.$index.'" id="upload_social_button_up_image'.$index.'" type="button" class="social_image_upload_button" value="' . esc_html(pll__('ADMIN_SOCIAL_BUTTON_DOWN_IMAGE', 'tnet')) . '" />';				
+		$html.= '<input up="true" index="'.$index.'" id="upload_social_button_up_image'.$index.'" type="button" class="social_image_upload_button" value="' . tnet_pl(ADMIN_SOCIAL_BUTTON_UP_IMAGE) . '" />';
+		$html.= '<input up="false" index="'.$index.'" id="upload_social_button_up_image'.$index.'" type="button" class="social_image_upload_button" value="' . tnet_pl(ADMIN_SOCIAL_BUTTON_DOWN_IMAGE) . '" />';				
 		
 		// Urls en
 		$html.= '<br/>';
-		$html.= '<label for="social_button_link_en'.$index.'"> ' . esc_html(pll__('ADMIN_SOCIAL_BUTTON_URL_EN', 'tnet')) . '</label>'; 
+		$html.= '<label for="social_button_link_en'.$index.'"> ' . tnet_pl(ADMIN_SOCIAL_BUTTON_URL_EN) . '</label>'; 
 		$html.= '<input type="text" id="social_button_link_en'.$index.'" name="tnet_general[social_buttons][urls][en]['.$index.']" value="' . $options['social_buttons']['urls']['en'][$index] . '" />';
 		
 		// Urls de
 		$html.= '<br/>';
-		$html.= '<label for="social_button_link_de'.$index.'"> ' . esc_html(pll__('ADMIN_SOCIAL_BUTTON_URL_DE', 'tnet')) . '</label>'; 
+		$html.= '<label for="social_button_link_de'.$index.'"> ' . tnet_pl(ADMIN_SOCIAL_BUTTON_URL_DE) . '</label>'; 
 		$html.= '<input type="text" id="social_button_link_de'.$index.'" name="tnet_general[social_buttons][urls][de]['.$index.']" value="' . $options['social_buttons']['urls']['de'][$index] . '" />';
 		
 		// Descriptions
 		$html.= '<br/>';
-		$html.= esc_html(pll__('ADMIN_SOCIAL_BUTTON_DESCRIPTION_EN: ', 'tnet'));
+		$html.= tnet_pl(ADMIN_SOCIAL_BUTTON_DESCRIPTION_EN);
 		$html.= '<input type="text" id="social_button_description_en'.$index.'" name="tnet_general[social_buttons][descriptions][en]['.$index.']" size="100" value="' . $options['social_buttons']['descriptions']['en'][$index] . '" />';
 		$html.= '<br/>';
-		$html.= esc_html(pll__('ADMIN_SOCIAL_BUTTON_DESCRIPTION_DE: ', 'tnet'));
+		$html.= tnet_pl(ADMIN_SOCIAL_BUTTON_DESCRIPTION_DE);
 		$html.= '<input type="text" id="social_button_description_de'.$index.'" name="tnet_general[social_buttons][descriptions][de]['.$index.']" size="100" value="' . $options['social_buttons']['descriptions']['de'][$index] . '" />';
 		
 		echo $html;
@@ -319,16 +319,16 @@
 	{	
 		// Register section
 		add_settings_section(
-			'tnet_main_images_section',         			// ID used to identify this section and with which to register options
-			esc_html(pll__('ADMIN_MAIN_IMAGES', 'tnet')),   // Title to be displayed on the administration page
-			'render_tnet_main_images_description', 			// Callback used to render the description of the section
-			'tnet_main_page' 		    					// Page on which to add this section of options
+			'tnet_main_images_section',         	// ID used to identify this section and with which to register options
+			tnet_pl(ADMIN_MAIN_IMAGES),				// Title to be displayed on the administration page
+			'render_tnet_main_images_description', 	// Callback used to render the description of the section
+			'tnet_main_page' 		    			// Page on which to add this section of options
 		);
 		
 		// Add count input field
 		add_settings_field(
 			'tnet_main_images_count',
-			esc_html(pll__('ADMIN_MAIN_IMAGES_COUNT', 'tnet')),
+			tnet_pl(ADMIN_MAIN_IMAGES_COUNT),
 			'render_tnet_main_images_count',
 			'tnet_main_page',
 			'tnet_main_images_section'
@@ -337,7 +337,7 @@
 		// Add width and height
 		add_settings_field(
 			'tnet_main_images_size',
-			esc_html(pll__('ADMIN_MAIN_IMAGES_SIZE', 'tnet')),
+			tnet_pl(ADMIN_MAIN_IMAGES_SIZE),
 			'render_tnet_main_images_size',
 			'tnet_main_page',
 			'tnet_main_images_section'
@@ -369,7 +369,7 @@
 	
 	function render_tnet_main_images_description()
 	{
-		echo '<p>' . esc_html(pll__('ADMIN_MAIN_IMAGES_DESCRIPTION', 'tnet')) . '</p>';
+		echo '<p>' . tnet_pl(ADMIN_MAIN_IMAGES_DESCRIPTION) . '</p>';
 	}
 	
 	function render_tnet_main_images_count()
@@ -384,10 +384,10 @@
 		$options = get_option('tnet_main_images');
 		$html = '';
 		
-		$html .= esc_html(pll__('ADMIN_MAIN_IMAGES_WIDTH', 'tnet'));
+		$html .= tnet_pl(ADMIN_MAIN_IMAGES_WIDTH);
 		$html .= '<input type="text" id="main_images_widht" name="tnet_main_images[width]" value="' . $options['width'] . '" />';
 		
-		$html .= esc_html(pll__('ADMIN_MAIN_IMAGES_HEIGHT', 'tnet'));
+		$html .= tnet_pl(ADMIN_MAIN_IMAGES_HEIGHT);
 		$html .= '<input type="text" id="main_images_height" name="tnet_main_images[height]" value="' . $options['height'] . '" />';
 		
 		echo $html;
@@ -401,7 +401,7 @@
 		
 		// Images
 		$html.= '<input type="hidden" id="main_image_url'.$index.'" name="tnet_main_images[urls]['.$index.']" value="' . $options['urls'][$index] . '" />';
-		$html.= '<input index="'.$index.'" id="upload_main_image'.$index.'" type="button" class="main_header_image_upload_button" value="' . esc_html(pll__('ADMIN_MAIN_IMAGE_ASSIGN', 'tnet')) . '" />';
+		$html.= '<input index="'.$index.'" id="upload_main_image'.$index.'" type="button" class="main_header_image_upload_button" value="' . tnet_pl(ADMIN_MAIN_IMAGE_ASSIGN) . '" />';
 		$html.= '<div id="main_image'.$index.'" style="width:100px; height:50px; background-image: url('.$options['urls'][$index].');
 					background-size: contain; display: inline-block; background-repeat: no-repeat;"></div>';
 		
@@ -445,16 +445,16 @@
 	{	
 		// Register section
 		add_settings_section(
-			'tnet_blog_emotions_section',         			// ID used to identify this section and with which to register options
-			esc_html(pll__('ADMIN_BLOG_EMOTIONS', 'tnet')),       // Title to be displayed on the administration page
-			'render_tnet_blog_emotions_description', // Callback used to render the description of the section
-			'tnet_blog_page'     			// Page on which to add this section of options
+			'tnet_blog_emotions_section',         	// ID used to identify this section and with which to register options
+			tnet_pl(ADMIN_BLOG_EMOTIONS),			// Title to be displayed on the administration page
+			'render_tnet_blog_emotions_description',// Callback used to render the description of the section
+			'tnet_blog_page'     					// Page on which to add this section of options
 		);
 		
 		// Add count input field
 		add_settings_field(
 			'tnet_blog_emotions_count',
-			esc_html(pll__('ADMIN_BLOG_EMITONS_COUNT', 'tnet')),
+			tnet_pl(ADMIN_BLOG_EMITONS_COUNT),
 			'render_tnet_blog_emotions_count',
 			'tnet_blog_page',
 			'tnet_blog_emotions_section'
@@ -463,7 +463,7 @@
 		// Add width and height
 		add_settings_field(
 			'tnet_blog_emotions_size',
-			esc_html(pll__('ADMIN_BLOG_EMOTIONS_SIZE', 'tnet')),
+			tnet_pl(ADMIN_BLOG_EMOTIONS_SIZE),
 			'render_tnet_blog_emotions_size',
 			'tnet_blog_page',
 			'tnet_blog_emotions_section'
@@ -475,11 +475,11 @@
 		for ($i = 0; $i < (int)$options['count']; $i++)
 		{			
 			add_settings_field( 
-				'tnet_blog_emotion_image'.$i,					// ID used to identify the field throughout the theme
-				'#'.$i,									// The label to the left of the option interface element
-				'render_tnet_blog_emotions_images',				// The name of the function responsible for rendering the option interfacetnet
-				'tnet_blog_page',    					// The page on which this option will be displayed
-				'tnet_blog_emotions_section',     				// The name of the section to which this field belongs			
+				'tnet_blog_emotion_image'.$i,		// ID used to identify the field throughout the theme
+				'#'.$i,								// The label to the left of the option interface element
+				'render_tnet_blog_emotions_images',	// The name of the function responsible for rendering the option interfacetnet
+				'tnet_blog_page',    				// The page on which this option will be displayed
+				'tnet_blog_emotions_section',     	// The name of the section to which this field belongs			
 				array($i)
 			);
 		}
@@ -495,7 +495,7 @@
 	
 	function render_tnet_blog_emotions_description()
 	{
-		echo '<p>' . esc_html(pll__('ADMIN_BLOG_EMOTIONS_DESCRIPTION', 'tnet')) . '</p>';
+		echo '<p>' . tnet_pl(ADMIN_BLOG_EMOTIONS_DESCRIPTION) . '</p>';
 	}
 	
 	function render_tnet_blog_emotions_count()
@@ -510,10 +510,10 @@
 		$options = get_option('tnet_blog_emotions');
 		$html = '';
 		
-		$html .= esc_html(pll__('ADMIN_BLOG_EMOTIONS_WIDTH', 'tnet'));
+		$html .= tnet_pl(ADMIN_BLOG_EMOTIONS_WIDTH);
 		$html .= '<input type="text" id="blog_emotions_widht" name="tnet_blog_emotions[width]" value="' . $options['width'] . '" />';
 		
-		$html .= esc_html(pll__('ADMIN_BLOG_EMOTIONS_HEIGHT', 'tnet'));
+		$html .= tnet_pl(ADMIN_BLOG_EMOTIONS_HEIGHT);
 		$html .= '<input type="text" id="blog_emotions_height" name="tnet_blog_emotions[height]" value="' . $options['height'] . '" />';
 		
 		echo $html;
@@ -527,7 +527,7 @@
 		
 		// Images
 		$html.= '<input type="hidden" id="blog_emotion_url'.$index.'" name="tnet_blog_emotions[urls]['.$index.']" value="' . $options['urls'][$index] . '" />';
-		$html.= '<input index="'.$index.'" id="upload_blog_emotion_image'.$index.'" type="button" class="blog_emotion_image_upload_button" value="' . esc_html(pll__('ADMIN_BLOG_EMOTIONS_ASSIGN', 'tnet')) . '" />';
+		$html.= '<input index="'.$index.'" id="upload_blog_emotion_image'.$index.'" type="button" class="blog_emotion_image_upload_button" value="' . tnet_pl(ADMIN_BLOG_EMOTIONS_ASSIGN) . '" />';
 		$html.= '<div id="blog_emotion_image'.$index.'" style="width:100px; height:50px; background-image: url('.$options['urls'][$index].');
 					background-size: contain; display: inline-block; background-repeat: no-repeat;"></div>';
 		
@@ -571,7 +571,7 @@
 		// Register section
 		add_settings_section(
 			'tnet_cast_section',         	// ID used to identify this section and with which to register options
-			esc_html(pll__('ADMIN_CAST', 'tnet')),        	// Title to be displayed on the administration page
+			tnet_pl(ADMIN_CAST),        	// Title to be displayed on the administration page
 			'render_tnet_cast_description', // Callback used to render the description of the section
 			'tnet_cast_page'     			// Page on which to add this section of options
 		);
@@ -579,7 +579,7 @@
 		// Add count input field
 		add_settings_field(
 			'tnet_cast_count',
-			esc_html(pll__('ADMIN_CAST_COUNT', 'tnet')),
+			tnet_pl(ADMIN_CAST_COUNT),
 			'render_tnet_cast_count',
 			'tnet_cast_page',
 			'tnet_cast_section'
@@ -588,7 +588,7 @@
 		// Add width and height
 		add_settings_field(
 			'tnet_cast_size',
-			esc_html(pll__('ADMIN_CAST_SIZE', 'tnet')),
+			tnet_pl(ADMIN_CAST_SIZE),
 			'render_tnet_cast_size',
 			'tnet_cast_page',
 			'tnet_cast_section'
@@ -600,11 +600,11 @@
 		for ($i = 0; $i < (int)$options['count']; $i++)
 		{			
 			add_settings_field( 
-				'tnet_cast_images'.$i,					// ID used to identify the field throughout the theme
-				'#'.$i,									// The label to the left of the option interface element
-				'render_tnet_cast_images',				// The name of the function responsible for rendering the option interface
-				'tnet_cast_page',    					// The page on which this option will be displayed
-				'tnet_cast_section',     				// The name of the section to which this field belongs			
+				'tnet_cast_images'.$i,		// ID used to identify the field throughout the theme
+				'#'.$i,						// The label to the left of the option interface element
+				'render_tnet_cast_images',	// The name of the function responsible for rendering the option interface
+				'tnet_cast_page',    		// The page on which this option will be displayed
+				'tnet_cast_section',     	// The name of the section to which this field belongs			
 				array($i)
 			);
 		}
@@ -620,7 +620,7 @@
 	
 	function render_tnet_cast_description()
 	{
-		echo '<p>' . esc_html(pll__('ADMIN_CAST_DESCRIPTION', 'tnet')) . '</p>';
+		echo '<p>' . tnet_pl(ADMIN_CAST_DESCRIPTION) . '</p>';
 	}
 	
 	function render_tnet_cast_count()
@@ -635,10 +635,10 @@
 		$options = get_option('tnet_header_cast');
 		$html = '';
 		
-		$html .= esc_html(pll__('ADMIN_CAST_WIDTH', 'tnet'));
+		$html .= tnet_pl(ADMIN_CAST_WIDTH);
 		$html .= '<input type="text" id="cast_widht" name="tnet_header_cast[width]" value="' . $options['width'] . '" />';
 		
-		$html .= esc_html(pll__('ADMIN_CAST_HEIGHT', 'tnet'));
+		$html .= tnet_pl(ADMIN_CAST_HEIGHT);
 		$html .= '<input type="text" id="cast_height" name="tnet_header_cast[height]" value="' . $options['height'] . '" />';
 		
 		echo $html;
@@ -650,11 +650,11 @@
 		$index = $args[0];
 		$html = '';
 		
-		$en = esc_html(pll__('ADMIN_CAST_EN', 'tnet'));
-		$de = esc_html(pll__('ADMIN_CAST_DE', 'tnet'));
+		$en = tnet_pl(ADMIN_CAST_EN);
+		$de = tnet_pl(ADMIN_CAST_DE);
 		
 		// Left
-		$html.= esc_html(pll__('ADMIN_CAST_LEFT', 'tnet'));
+		$html.= tnet_pl(ADMIN_CAST_LEFT);
 		
 		// en
 		$html.= '<input type="hidden" id="cast_left_url_en'.$index.'" name="tnet_header_cast[left_urls][en]['.$index.']" value="' . $options['left_urls']['en'][$index] . '" />';
@@ -669,7 +669,7 @@
 					background-size: contain; display: inline-block; background-repeat: no-repeat;"></div>';
 		
 		// Right 
-		$html.= esc_html(pll__('ADMIN_CAST_RIGHT', 'tnet'));
+		$html.= tnet_pl(ADMIN_CAST_RIGHT);
 		
 		// en
 		$html.= '<input type="hidden" id="cast_right_url_en'.$index.'" name="tnet_header_cast[right_urls][en]['.$index.']" value="' . $options['right_urls']['en'][$index] . '" />';
@@ -727,7 +727,7 @@
 		// Register section
 		add_settings_section(
 			'tnet_episodes_section',         		// ID used to identify this section and with which to register options
-			esc_html(pll__('ADMIN_EPISODES', 'tnet')),        		// Title to be displayed on the administration page
+			tnet_pl(ADMIN_EPISODES),        		// Title to be displayed on the administration page
 			'render_tnet_episodes_description',   	// Callback used to render the description of the section
 			'tnet_episodes_page'     				// Page on which to add this section of options
 		);		
@@ -735,7 +735,7 @@
 		// Add count input field
 		add_settings_field(
 			'tnet_episodes_count',
-			esc_html(pll__('ADMIN_EPISODES_COUNT', 'tnet')),
+			tnet_pl(ADMIN_EPISODES_COUNT),
 			'render_tnet_episodes_count',
 			'tnet_episodes_page',
 			'tnet_episodes_section'
@@ -768,7 +768,7 @@
  
 	function render_tnet_episodes_description()
 	{
-		echo '<p>' . esc_html(pll__('ADMIN_EPISODES_DESCRIPTION', 'tnet')) . '</p>';
+		echo '<p>' . tnet_pl(ADMIN_EPISODES_DESCRIPTION) . '</p>';
 	}
 	
 	function render_tnet_episodes_count()
@@ -787,9 +787,9 @@
 		$episdoe_additional_style = 'background-size: contain; display: inline-block; background-repeat: no-repeat; margin: 2px 5px;';
 		
 		// Titles
-		$html.= esc_html(pll__('ADMIN_EPISODES_TITLE_EN', 'tnet'));
+		$html.= tnet_pl(ADMIN_EPISODES_TITLE_EN);
 		$html.= '<input type="text" id="episode_title_en'.$index.'" name="tnet_episodes[titles][en]['.$index.']" value="' . $options['titles']['en'][$index] . '" />';
-		$html.= esc_html(pll__('ADMIN_EPISODES_TITLE_DE', 'tnet'));
+		$html.= tnet_pl(ADMIN_EPISODES_TITLE_DE);
 		$html.= '<input type="text" id="episode_title_de'.$index.'" name="tnet_episodes[titles][de]['.$index.']" value="' . $options['titles']['de'][$index] . '" />';		
 		$html.= '<br/>';
 		
@@ -806,37 +806,37 @@
 			$html.= '<br/>';
 			
 			// buttons
-			$html.= '<input en="true" index="'.$index.'" id="upload_episode_en'.$index.'" type="button" class="episode_upload_button" value="' . esc_html(pll__('ADMIN_EPISODES_EN', 'tnet')) . '" />';
-			$html.= '<input en="false" index="'.$index.'" id="upload_episode_de'.$index.'" type="button" class="episode_upload_button" value="' . esc_html(pll__('ADMIN_EPISODES_DE', 'tnet')) . '" />';
+			$html.= '<input en="true" index="'.$index.'" id="upload_episode_en'.$index.'" type="button" class="episode_upload_button" value="' . tnet_pl(ADMIN_EPISODES_EN) . '" />';
+			$html.= '<input en="false" index="'.$index.'" id="upload_episode_de'.$index.'" type="button" class="episode_upload_button" value="' . tnet_pl(ADMIN_EPISODES_DE) . '" />';
 			$html.= '<br/>';
 			
 			// alts
-			$html.= esc_html(pll__('ADMIN_EPISODES_ALT_EN', 'tnet'));
+			$html.= tnet_pl(ADMIN_EPISODES_ALT_EN);
 			$html.= '<input type="text" id="episode_alt_en'.$index.'" name="tnet_episodes[alts][en]['.$index.']" value="' . $options['alts']['en'][$index] . '" />';
-			$html.= esc_html(pll__('ADMIN_EPISODES_ALT_DE', 'tnet'));
+			$html.= tnet_pl(ADMIN_EPISODES_ALT_DE);
 			$html.= '<input type="text" id="episode_alt_de'.$index.'" name="tnet_episodes[alts][de]['.$index.']" value="' . $options['alts']['de'][$index] . '" />';
 			$html.= '<br/>';
 		}
 		else
 		{
-			$html.= esc_html(pll__('ADMIN_EPISODES_VIDEO_URL_EN', 'tnet'));
+			$html.= tnet_pl(ADMIN_EPISODES_VIDEO_URL_EN);
 			$html.= '<input type="text" id="episode_en_url" name="tnet_episodes[urls][en]['.$index.']" value="' . $options['urls']['en'][$index] . '" />';
-			$html.= esc_html(pll__('ADMIN_EPISODES_VIDEO_URL_DE', 'tnet'));
+			$html.= tnet_pl(ADMIN_EPISODES_VIDEO_URL_DE);
 			$html.= '<input type="text" id="episode_de_url" name="tnet_episodes[urls][de]['.$index.']" value="' . $options['urls']['de'][$index] . '" />';
 			$html.= '<br/>';
 		}
 		
 		// Types
-		$html.= esc_html(pll__('ADMIN_EPISODES_TYPE', 'tnet'));
+		$html.= tnet_pl(ADMIN_EPISODES_TYPE);
 		$html .= '<select id="tnet_episode_type'.$index.'" name="tnet_episodes[types]['.$index.']">';
-			$html .= '<option value="default">'.esc_html(pll__('ADMIN_EPISODES_SELECT_TYPE', 'tnet')).'</option>';
-			$html .= '<option value="image"' . selected( $options['types'][$index], 'image', false) . '>'.esc_html(pll__('ADMIN_EPISODES_TYPE_IMAGE')).'</option>';
-			$html .= '<option value="video"' . selected( $options['types'][$index], 'video', false) . '>'.esc_html(pll__('ADMIN_EPISODES_TYPE_VIDEO')).'</option>';
+			$html .= '<option value="default">'.tnet_pl(ADMIN_EPISODES_SELECT_TYPE).'</option>';
+			$html .= '<option value="image"' . selected( $options['types'][$index], 'image', false) . '>'.tnet_pl(ADMIN_EPISODES_TYPE_IMAGE).'</option>';
+			$html .= '<option value="video"' . selected( $options['types'][$index], 'video', false) . '>'.tnet_pl(ADMIN_EPISODES_TYPE_VIDEO).'</option>';
 		$html .= '</select>';
 		
 		// Thumbnails		
 		$html.= '<input type="hidden" id="thumbnail_url'.$index.'" name="tnet_episodes[thumbnails]['.$index.']" value="' . $options['thumbnails'][$index] . '" />';		
-		$html.= '<input index="'.$index.'" id="upload_thumbnail'.$index.'" type="button" class="thumbnial_upload_button" value="' . esc_html(pll__('ADMIN_EPISODES_THUMBNAIL', 'tnet')) . '" />';
+		$html.= '<input index="'.$index.'" id="upload_thumbnail'.$index.'" type="button" class="thumbnial_upload_button" value="' . tnet_pl(ADMIN_EPISODES_THUMBNAIL) . '" />';
 		$html.= '<div id="episode_thumbnail'.$index.'" style="width:40px; height:20px; background-image: url('.$options['thumbnails'][$index].');
 					background-size: contain; display: inline-block; background-repeat: no-repeat;"></div>';			
 		

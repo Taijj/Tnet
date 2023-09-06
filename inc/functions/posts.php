@@ -24,8 +24,8 @@
 					get_previous_posts_page_link(),
 					tnet_has_next_posts_page(),
 					tnet_has_previous_posts_page(),
-					esc_html( pll__('BLOG_POSTS_OLDER', 'tnet')),
-					esc_html( pll__('BLOG_POSTS_NEWER', 'tnet'))
+					tnet_pl(BLOG_POSTS_OLDER),
+					tnet_pl(BLOG_POSTS_NEWER)
 					);
 			}
 			else if(is_single())
@@ -35,8 +35,8 @@
 					tnet_get_previous_post_url(),
 					tnet_has_next_post(),
 					tnet_has_previous_post(),
-					esc_html( pll__('BLOG_POST_OLDER', 'tnet')),
-					esc_html( pll__('BLOG_POST_NEWER', 'tnet'))
+					tnet_pl(BLOG_POST_OLDER),
+					tnet_pl(BLOG_POST_NEWER)
 					);
 			}
 		}
@@ -80,8 +80,8 @@
 				tnet_get_adjacent_comment_page_url(-1),
 				tnet_get_adjacent_comment_page_url(1) != null,
 				tnet_get_adjacent_comment_page_url(-1) != null,
-				esc_html( pll__('BLOG_COMMENTS_OLDER', 'tnet')),
-				esc_html( pll__('BLOG_COMMENTS_NEWER', 'tnet'))
+				tnet_pl(BLOG_COMMENTS_OLDER),
+				tnet_pl(BLOG_COMMENTS_NEWER)
 				);			
 		}		
 		
@@ -176,13 +176,13 @@
 			// Time
 			$comment_time = sprintf('<time class="comment-date" datetime="%1$s" pubdate>%2$s - %3$s</time>' ,
 									esc_attr( get_comment_date('c') ),
-									esc_attr( get_comment_date( esc_html(pll__('BLOG_DATE_FORMAT')) )),
+									esc_attr( get_comment_date( tnet_pl(BLOG_DATE_FORMAT) )),
 									esc_attr( get_comment_time() ));
 			
 			// Edit link
 			$edit_link = '';
 			if(	current_user_can( 'edit_comment', $comment->comment_ID) )
-				$edit_link = ' | <a id="edit-comment-link" href="' .esc_url(get_edit_comment_link()). '">' .esc_html(pll__('BLOG_EDIT_COMMENT', 'tnet')). '</a>';
+				$edit_link = ' | <a id="edit-comment-link" href="' .esc_url(get_edit_comment_link()). '">' .tnet_pl(BLOG_EDIT_COMMENT). '</a>';
 			?>			
 			
 			<div <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">			
@@ -202,7 +202,7 @@
 						<?php							
 							if( $comment->comment_approved == '0')
 							{
-								echo '<p class="comment-text">' .esc_html(pll__('BLOG_COMMENT_MODERATION', 'tnet')). '</p>';
+								echo '<p class="comment-text">' .tnet_pl(BLOG_COMMENT_MODERATION). '</p>';
 							}								
 							else
 							{

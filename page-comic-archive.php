@@ -18,9 +18,9 @@
 
 				<div id="comic-archive-content">
 
-					<h1><?php tnet_e('COMIC_ARCHIVE_HEADLINE'); ?></h1>
+					<h1><?php tnet_e(COMIC_ARCHIVE_HEADLINE); ?></h1>
 					<hr/>
-					<p><?php tnet_e('COMIC_ARCHIVE_SUBTITLE'); ?></p>
+					<p><?php tnet_e(COMIC_ARCHIVE_SUBTITLE); ?></p>
 					<br/>
 
 					<?php

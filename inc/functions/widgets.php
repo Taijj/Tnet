@@ -21,8 +21,8 @@
 
 			parent::__construct(
 				'progress_bar', // ID
-				esc_html(pll__('WIDGED_PRGORESS_BAR_NAME', 'tnet')),
-				array( 'description' => esc_html(pll__('WIDGET_PROGRESS_BAR_DESCRIPTION', 'tnet')) )
+				tnet_pl(WIDGED_PRGORESS_BAR_NAME),
+				array( 'description' => tnet_pl(WIDGET_PROGRESS_BAR_DESCRIPTION) )
 			);
 		}
 
@@ -88,17 +88,17 @@
 			// Widget admin form
 			?>
 				<p>
-				  <label for="<?php echo $this->get_field_id( 'image-url' ); ?>"><?php esc_html_e(pll__('WIDGET_PROGRESS_BAR_IMAGE', 'tnet')) ; ?></label>
+				  <label for="<?php echo $this->get_field_id( 'image-url' ); ?>"><?php tnet_e(WIDGET_PROGRESS_BAR_IMAGE) ; ?></label>
 				  <img id="progress-bar-widget-software-image" src="<?php echo esc_url($image_url); ?>">
 				  <input class="widefat" id="<?php echo $this->get_field_id( 'image-url' ); ?>" name="<?php echo $this->get_field_name( 'image-url' ); ?>" type="text" value="<?php echo esc_url( $image_url ); ?>" />
-				  <button class="upload-progress-bar-image-button"><?php esc_html_e(pll__('WIDGET_PROGRESS_BAR_UPLOAD_BUTTON', 'tnet')); ?></button>
+				  <button class="upload-progress-bar-image-button"><?php tnet_e(WIDGET_PROGRESS_BAR_UPLOAD_BUTTON); ?></button>
 				</p>
 				<p>
-					<label for="<?php echo $this->get_field_id( 'image-alt' ); ?>"><?php esc_html_e(pll__('WIDGET_PROGRESS_BAR_IMAGE_ALT', 'tnet')); ?></label>
+					<label for="<?php echo $this->get_field_id( 'image-alt' ); ?>"><?php tnet_e(WIDGET_PROGRESS_BAR_IMAGE_ALT); ?></label>
 					<input class="widefat" id="<?php echo $this->get_field_id( 'image-alt' ); ?>" name="<?php echo $this->get_field_name( 'image-alt' ); ?>" type="text" value="<?php echo esc_attr( $image_alt ); ?>">
 				</p>
 				<p>
-					<label for="<?php echo $this->get_field_id( 'caption' ); ?>"><?php esc_html_e(pll__('WIDGET_PROGRESS_BAR_CAPTION', 'tnet')); ?></label>
+					<label for="<?php echo $this->get_field_id( 'caption' ); ?>"><?php tnet_e(WIDGET_PROGRESS_BAR_CAPTION); ?></label>
 					<input class="widefat" id="<?php echo $this->get_field_id( 'caption' ); ?>" name="<?php echo $this->get_field_name( 'caption' ); ?>" type="text" value="<?php echo esc_attr( $caption ); ?>">
 				</p>
 				<p>
@@ -106,11 +106,11 @@
 					<input class="widefat" id="<?php echo $this->get_field_id( 'note' ); ?>" name="<?php echo $this->get_field_name( 'note' ); ?>" type="text" value="<?php echo esc_attr( $note ); ?>">
 				</p>
 				<p>
-					<label for="<?php echo $this->get_field_id( 'percentage' ); ?>"><?php esc_html_e(pll__('WIDGET_PROGRESS_BAR_PERCENTAGE', 'tnet')); ?></label>
+					<label for="<?php echo $this->get_field_id( 'percentage' ); ?>"><?php tnet_e(WIDGET_PROGRESS_BAR_PERCENTAGE); ?></label>
 					<input class="widefat" id="<?php echo $this->get_field_id( 'percentage' ); ?>" name="<?php echo $this->get_field_name( 'percentage' ); ?>" type="text" value="<?php echo esc_attr( $percentage ); ?>">
 				</p>
 				<p>
-					<label for="<?php echo $this->get_field_id( 'show-percentage' ); ?>"><?php esc_html_e(pll__('WIDGET_PROGRESS_BAR_SHOW_PERCENTAGE', 'tnet')); ?></label>
+					<label for="<?php echo $this->get_field_id( 'show-percentage' ); ?>"><?php tnet_e(WIDGET_PROGRESS_BAR_SHOW_PERCENTAGE); ?></label>
 					<input class="checkbox" id="<?php echo $this->get_field_id( 'show-percentage' ); ?>" name="<?php echo $this->get_field_name( 'show-percentage' ); ?>"
 						type="checkbox" <?php checked( $instance[ 'show-percentage' ], 'on' ); ?> >
 				</p>
@@ -149,8 +149,8 @@
 
 			parent::__construct(
 				'progress_bar', // ID
-				esc_html(pll__('WIDGED_GALLERY_NAME', 'tnet')),
-				array( 'description' => esc_html(pll__('WIDGET_GALLERY_DESCRIPTION', 'tnet')) )
+				tnet_pl(WIDGED_GALLERY_NAME),
+				array( 'description' => tnet_pl(WIDGET_GALLERY_DESCRIPTION) )
 			);
 		}
 
@@ -222,14 +222,14 @@
 			}
 
 			?>
-				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php esc_html_e(pll__('WIDGET_GALLERY_TITLE', 'tnet')); ?></label>
+				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php tnet_e(WIDGET_GALLERY_TITLE); ?></label>
 				<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 
-				<label for="gallery-widget-images"><?php esc_html_e(pll__('WIDGET_GALLERY_IMAGES', 'tnet')); ?></label>
+				<label for="gallery-widget-images"><?php tnet_e(WIDGET_GALLERY_IMAGES); ?></label>
 				<div id="gallery-widget-images" data-input-field-format="<?php echo esc_attr($input_field_format); ?>" data-image-format="<?php echo esc_attr($image_format); ?>">
 					<?php echo join('<br/>', $image_urls_html); ?>
 				</div>
-				<button class="upload-gallery-images-button"><?php esc_html_e(pll__('WIDGET_GALLERY_UPLOAD_BUTTON', 'tnet')); ?></button>
+				<button class="upload-gallery-images-button"><?php tnet_e(WIDGET_GALLERY_UPLOAD_BUTTON); ?></button>
 			<?php
 		}
 

@@ -5,25 +5,25 @@
 	if( tnet_is_comic_or_child() )
 	{
 		$layoutPath .= '/inc/headers/comic.php';
-		$translatedText = pll__('HEADER_COMIC', 'tnet');
+		$translatedText = tnet_pl(HEADER_COMIC);
 		$linkDestination = tnet_get_comic_url();
 	}
 	else if( tnet_is_game_or_child() )
 	{
 		$layoutPath .= '/inc/headers/game.php';
-		$translatedText = pll__('HEADER_GAME', 'tnet');
+		$translatedText = tnet_pl(HEADER_GAME);
 		$linkDestination = tnet_get_game_url();
 	}
 	else if( tnet_is_blog_or_child() )
 	{
 		$layoutPath .= '/inc/headers/blog.php';
-		$translatedText = pll__('HEADER_BLOG', 'tnet');
+		$translatedText = tnet_pl(HEADER_BLOG);
 		$linkDestination = tnet_get_blog_url();
 	}
 	else
 	{
 		$layoutPath .= '/inc/headers/main.php';
-		$translatedText = pll__('HEADER_MAIN', 'tnet');
+		$translatedText = tnet_pl(HEADER_MAIN);
 		$linkDestination = get_home_url();
 	}
 ?>

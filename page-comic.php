@@ -62,7 +62,7 @@
 								}
 								else
 								{
-									tnet_e('COMIC_NO_EPISODES');
+									tnet_e(COMIC_NO_EPISODES);
 								}
 							?>
 						</div>
