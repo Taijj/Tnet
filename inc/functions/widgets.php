@@ -5,13 +5,123 @@
 	{
 		register_widget('tnet_progress_bar');
 		register_widget('tnet_gallery');
+		register_widget('tnet_hard_skill');
 	}
 	add_action( 'widgets_init', 'tnet_register_progress_bar_widget' );
 
 
 
+	// ============
+	// Skill
+	// ============
+	class tnet_hard_skill extends WP_Widget
+	{
+		function __construct()
+		{
+			// Add Widget scripts
+			add_action('admin_enqueue_scripts', array($this, 'enqueue_scripts'));
 
-	// Progress bar
+			parent::__construct(
+				'hard_skill', // ID
+				tnet_pl(WIDGED_HARD_SKILL_NAME),
+				array('description' => tnet_pl(WIDGET_HARD_SKILL_DESCRIPTION))
+			);
+		}
+
+		public function enqueue_scripts()
+		{
+			wp_enqueue_script('media-upload');
+			wp_enqueue_media();
+			wp_enqueue_script('tnet_widgets_image_upload', get_template_directory_uri() . '/js/widgets-image-upload.js', array('jquery'));
+		}
+
+
+
+		// Creating widget front-end
+		public function widget($args, $input)
+		{
+			// before and after widget arguments are defined by themes
+			echo $args['before_widget'];
+
+			// Widget content
+			$instance = $this->sanitize($input);
+
+			$image_url = $instance['image-url'];
+			$image_alt = $instance['image-alt'];
+			$title = $instance['title'];
+			$details = $instance['details'];			
+
+			?>
+				<div class="hard-skill" title="<?php echo esc_attr($image_alt); ?>">
+					<?php if ($image_url != ''): ?>
+						<img class="hard-skill-image nearest-neighbor" src="<?php echo esc_url($image_url); ?>"></img>
+					<?php endif; ?>
+					<div class="hard-skill-main">
+						<p class="hard-skill-title"><?php esc_html_e($title); ?></p>
+                        <p class="hard-skill-details"><?php echo $details; ?></p>
+					</div>
+				</div>
+			<?php
+
+			// End args
+			echo $args['after_widget'];
+		}
+
+		// Widget Backend
+		public function form($input)
+		{
+			$instance = $this->sanitize($input);
+
+			$image_url = $instance['image-url'];
+			$image_alt = $instance['image-alt'];
+			$title = $instance['title'];
+			$details = $instance['details'];			
+
+			// Widget admin form
+			?>
+				<p>
+					<label for="<?php echo $this->get_field_id('image-url'); ?>"><?php tnet_e(WIDGET_HARD_SKILL_IMAGE); ?></label>
+					<img id="hard-skill-widget-image" src="<?php echo esc_url($image_url); ?>">
+					<input class="widefat" id="<?php echo $this->get_field_id('image-url'); ?>" name="<?php echo $this->get_field_name('image-url'); ?>" type="text" value="<?php echo esc_url($image_url); ?>" />
+					<button class="upload-hard-skill-image-button"><?php tnet_e(WIDGET_HARD_SKILL_UPLOAD_BUTTON); ?></button>
+				</p>
+				<p>
+					<label for="<?php echo $this->get_field_id('image-alt'); ?>"><?php tnet_e(WIDGET_HARD_SKILL_IMAGE_ALT); ?></label>
+					<input class="widefat" id="<?php echo $this->get_field_id('image-alt'); ?>" name="<?php echo $this->get_field_name('image-alt'); ?>" type="text" value="<?php echo esc_attr($image_alt); ?>">
+				</p>
+				<p>
+					<label for="<?php echo $this->get_field_id('title'); ?>"><?php tnet_e(WIDGET_HARD_SKILL_TITLE); ?></label>
+					<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>">
+				</p>
+				<p>
+					<label for="<?php echo $this->get_field_id('details'); ?>"><?php tnet_e(WIDGET_HARD_SKILL_DETAILS); ?></label>
+					<textarea class="widefat" id="<?php echo $this->get_field_id('details'); ?>" name="<?php echo $this->get_field_name('details'); ?>" type="text"><?php echo esc_attr($details); ?></textarea>
+				</p>				
+			<?php
+		}
+
+		// Updating widget replacing old instances with new
+		public function update($new_instance, $old_instance)
+		{
+			return $this->sanitize($new_instance);
+		}
+
+		private function sanitize($input)
+		{
+			$output = array();
+			$output['image-url'] = (!empty($input['image-url'])) ? $input['image-url'] : '';
+			$output['image-alt'] = (!empty($input['image-alt'])) ? $input['image-alt'] : '';
+			$output['title'] = (!empty($input['title'])) ? $input['title'] : '';
+			$output['details'] = (!empty($input['details'])) ? $input['details'] : '';			
+			return $output;
+		}
+	}
+
+
+
+	// ============
+	// Progress Bar
+	// ============
 	class tnet_progress_bar extends WP_Widget
 	{
 		function __construct()
@@ -46,8 +156,7 @@
 
 			$image_url = $instance['image-url'];
 			$image_alt = $instance['image-alt'];
-			$caption = $instance['caption'];
-			$note = $instance['note'];
+			$caption = $instance['caption'];			
 			$percentage = (int)$instance['percentage'];
 			$show_percentage = $instance['show-percentage'];
 
@@ -62,11 +171,8 @@
 							<p class="progress-bar-percentage"><?php echo $percentage.'%'; ?></p>
 						<?php endif; ?>
 						<p class="progress-bar-text"><?php esc_html_e($caption); ?></p>
-					</div>
-				</div>
-				<?php if($note != '') : ?>
-					<p class="progress-bar-note"><?php esc_html_e($note); ?></p>
-				<?php endif; ?>
+                    </div>
+				</div>								
 			<?php
 
 			// End args
@@ -80,8 +186,7 @@
 
 			$image_url = $instance['image-url'];
 			$image_alt = $instance['image-alt'];
-			$caption = $instance['caption'];
-			$note = $instance['note'];
+			$caption = $instance['caption'];			
 			$percentage = $instance['percentage'];
 			$show_percentage = $instance['show-percentage'];			
 
@@ -100,11 +205,7 @@
 				<p>
 					<label for="<?php echo $this->get_field_id( 'caption' ); ?>"><?php tnet_e(WIDGET_PROGRESS_BAR_CAPTION); ?></label>
 					<input class="widefat" id="<?php echo $this->get_field_id( 'caption' ); ?>" name="<?php echo $this->get_field_name( 'caption' ); ?>" type="text" value="<?php echo esc_attr( $caption ); ?>">
-				</p>
-				<p>
-					<label for="<?php echo $this->get_field_id( 'note' ); ?>"><?php tnet_e(WIDGET_PROGRESS_BAR_NOTE); ?></label>
-					<input class="widefat" id="<?php echo $this->get_field_id( 'note' ); ?>" name="<?php echo $this->get_field_name( 'note' ); ?>" type="text" value="<?php echo esc_attr( $note ); ?>">
-				</p>
+				</p>				
 				<p>
 					<label for="<?php echo $this->get_field_id( 'percentage' ); ?>"><?php tnet_e(WIDGET_PROGRESS_BAR_PERCENTAGE); ?></label>
 					<input class="widefat" id="<?php echo $this->get_field_id( 'percentage' ); ?>" name="<?php echo $this->get_field_name( 'percentage' ); ?>" type="text" value="<?php echo esc_attr( $percentage ); ?>">
@@ -128,8 +229,7 @@
 			$output = array();
 			$output['image-url'] = (!empty( $input['image-url'] )) ? $input['image-url'] : '';
 			$output['image-alt'] = (!empty( $input['image-alt'] )) ? $input['image-alt'] : '';
-			$output['caption'] = (!empty( $input['caption'] )) ? $input['caption'] : '';
-			$output['note'] = (!empty( $input['note'] )) ? $input['note'] : '';
+			$output['caption'] = (!empty( $input['caption'] )) ? $input['caption'] : '';			
 			$output['percentage'] = (!empty( $input['percentage'] )) ? $input['percentage'] : '0%';
 			$output['show-percentage'] = (!empty( $input['show-percentage'] )) ? $input['show-percentage'] : 'off';
 			return $output;
@@ -137,8 +237,9 @@
 	}
 
 
-
+	// ============
 	// Gallery
+	// ============
 	class tnet_gallery extends WP_Widget
 	{
 

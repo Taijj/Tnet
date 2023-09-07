@@ -319,7 +319,7 @@ strong { font-weight: bold; }
 	align-items: center;
 
 	width: 100%;
-	height: 40px;
+	height: 48px;
     position: relative;
 
 	background-color: #CBD4D9;
@@ -329,25 +329,59 @@ strong { font-weight: bold; }
 
 .progress-bar-fill
 {
-	height: 32px;
+	height: 40px;
 	background-color: #8dcde8;
 }
 
-.progress-bar-main p {
-	position: absolute;
-	margin-top: -2px;
+.progress-bar-main p
+{
+	position: absolute;	
 
-	font-size: 18px;
+	font-size: 20px;
 	font-weight: bold;
     user-select: none;
 }
 
 .progress-bar-percentage { right: 2%; }
-.progress-bar-text
-{
-	left: 2%;
-	line-height: 18px;
+.progress-bar-text { left: 2%; }
+
+.progress-bar-note {
+	font-size: 15px;
+	text-align: right;
+	padding-right: 2%;
 }
+
+
+.widget_hard_skill {
+	margin-bottom: 5px !important;
+}
+
+.hard-skill {
+	display: flex;
+	overflow: hidden;
+	padding: 5px;
+	background-color: #bfcfd9;
+}
+
+.hard-skill-image {
+	width: 48px;
+	height: 48px;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.hard-skill-main {
+	margin-left: 1%;	
+	width: 100%;
+}
+
+.hard-skill-main p {
+	padding-left: 3%;
+	white-space: nowrap;
+}
+
+.hard-skill-title { font-weight: bold; }
+.hard-skill-details { font-size: 15px; }
 
 
 
@@ -613,6 +647,7 @@ strong { font-weight: bold; }
 	background-color: #bfcfd9;
 	padding: 20px 0;
 }
+
 
 
 
@@ -1982,7 +2017,6 @@ header { border-bottom: 4px solid black; }
 }
 .resume-entry-employer { margin-right: 20px; }
 .resume-entry-year { text-align: right; }
-.resume-entry p { text-align: justify; }
 
 .resume-skills .widget_progress_bar {
 	margin-bottom: 6px !important;

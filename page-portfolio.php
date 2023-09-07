@@ -23,11 +23,11 @@
 					<div>
 						<h1 class="centered-text"><?php tnet_e(PORTFOLIO_TITLE); ?></h1>
 						<hr/>
-						<p class="centered-text"><?php tnet_e(PORTFOLIO_SUBTITLE); ?><p>
-					</div>
+						<p class="centered-text"><?php tnet_e(PORTFOLIO_SUBTITLE); ?><p>                        
+                    </div>
 
-					<span id="scroll-target"></span>
-					<div class="tab-view">
+                    <span id="scroll-target"></span>
+                    <div class="tab-view">                        
 						<div class="tab-button" id="private-tab-button"><?php tnet_e(PORTFOLIO_PRIVATE_TAB); ?></div>
 						<div class="tab-button" id="professional-tab-button"><?php tnet_e(PORTFOLIO_PROFESSIONAL_TAB); ?></div>
 						<div class="tab-button" id="tab-back-button"><?php tnet_e(PORTFOLIO_BACK_TAB); ?></div>
