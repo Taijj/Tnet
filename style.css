@@ -360,7 +360,6 @@ strong { font-weight: bold; }
 	display: flex;
 	overflow: hidden;
 	padding: 5px;
-	background-color: #bfcfd9;
 }
 
 .hard-skill-image {
@@ -375,11 +374,7 @@ strong { font-weight: bold; }
 	width: 100%;
 }
 
-.hard-skill-main p {
-	padding-left: 3%;
-	white-space: nowrap;
-}
-
+.hard-skill-main p { padding-left: 3%; }
 .hard-skill-title { font-weight: bold; }
 .hard-skill-details { font-size: 15px; }
 
@@ -2065,25 +2060,41 @@ header { border-bottom: 4px solid black; }
 
 
 /* Project Pages */
-.project-data {
+.project-data-container {
+	display: flex;
 	margin-top: 20px;
+}
+
+.project-data {
 	list-style: none;
 	padding: 0;
 }
+
+.project-data-left { width: 50%; }
+.project-data-right {
+	margin-left: 5%;
+	margin-right: auto;
+}
+
 .project-data li { margin-top: 10px; }
 
 .project-data-label {
 	font-weight: bold;
-	width: 260px;
+	width: 230px;
 }
 
-.software-list { display: flex; }
-.software-list img { margin-right: 5px; }
-
-@media only screen and (min-width: 680px)
+.icon-list
+{ 
+	display: flex;
+	margin-bottom: 10px;
+}
+.icon-list img
 {
-	.project-data li
-	{
+	margin-right: 5px;
+}
+
+@media only screen and (min-width: 840px) {
+	.project-data li {
 		margin: 0;
 		display: flex;
 	}
