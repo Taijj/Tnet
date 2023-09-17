@@ -2084,8 +2084,7 @@ header { border-bottom: 4px solid black; }
 }
 
 .icon-list
-{ 
-	display: flex;
+{ 	
 	margin-bottom: 10px;
 }
 .icon-list img
