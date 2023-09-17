@@ -5,7 +5,8 @@
 		<div id="contact-info" class="footer-info">
 			<h4><?php tnet_e(FOOTER_CONTACT_HEAD); ?> </h4>
 			<p class = "footer-p"><a class="footer-link" href="mailto:<?php esc_html_e( get_option('admin_email') );?>"><?php echo tnet_pl(FOOTER_MAIL). ' ' .get_option('admin_email');?></a></p>
-			<p class = "footer-p"><?php tnet_e(FOOTER_DISCORD);?></p>
+			<p class = "footer-p"><a class="footer-link" href="https://discordapp.com/users/290486871115563009"><?php tnet_e(FOOTER_DISCORD);?></a></p>
+			<p class = "footer-p"><a class="footer-link" href="https://discord.gg/kpczujEVw3"><?php tnet_e(FOOTER_DISCORD_SERVER);?></a></p>			
 		</div>
 
 		<div id="left-delimiter" class="footer-delimiter"></div>
